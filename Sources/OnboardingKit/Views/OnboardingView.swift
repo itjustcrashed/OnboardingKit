@@ -29,7 +29,7 @@ public struct OnboardingView: View {
                 VStack(spacing: 20) {
                     VStack(alignment: .leading) {
                         Text("Welcome to")
-                        Text("\(Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "OBKIT_BUNDLE_NAME")")
+                        Text("\(Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "BUNDLE_NAME")")
                             .foregroundStyle(Color.accentColor)
                     }
                     .font(.title3.weight(.medium).width(.condensed))

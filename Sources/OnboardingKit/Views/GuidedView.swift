@@ -28,13 +28,14 @@ public struct GuidedView<Content: View>: View {
     
     public var body: some View {
         content
-            .sheet(isPresented: $showOnboarding) {
+            .fullScreenCover(isPresented: $showOnboarding) {
                 OnboardingView(
                     features: features,
                     privacyDescription: privacyDescription,
                     privacyURL: privacyURL
                 )
             }
+            .interactiveDismissDisabled()
             .onAppear {
                 showOnboarding = !onboardingComplete
             }
@@ -56,7 +57,7 @@ public struct GuidedView<Content: View>: View {
                 description: "Previews how your app looks when things are different."
             )
         ],
-        privacyDescription: "\(Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "OBKIT_BUNDLE_NAME") collects usage data including your device identifier, app version, and language. By selecting continue, you agree to the privacy policy.",
+        privacyDescription: "\(Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "Xcode Previews") collects usage data including your device identifier, app version, and language. By selecting continue, you agree to the privacy policy.",
         privacyURL: URL(string: "https://www.apple.com/privacy")!
     ) {
         NavigationStack {
