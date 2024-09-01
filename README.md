@@ -1,3 +1,6 @@
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fwannafedor4%2FOnboardingKit%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/wannafedor4/OnboardingKit)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fwannafedor4%2FOnboardingKit%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/wannafedor4/OnboardingKit)
+
 # OnboardingKit
 
 ![be back soon](/.github/its_2am.png)
