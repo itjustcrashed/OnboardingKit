@@ -1,7 +1,7 @@
 // OnboardingKit, by Gavin Gichini
 
 import SwiftUI
-#if !os(watchOS)
+#if canImport(SafariServices)
 import SafariServices
 #endif
 
@@ -72,11 +72,48 @@ public struct OnboardingView: View {
                 .frame(maxWidth: 600)
                 .padding()
             }
+#elseif os(tvOS)
+            HStack {
+                VStack {
+                    VStack(alignment: .leading) {
+                        Text("Welcome to")
+                            .foregroundStyle(.secondary)
+                        Text("\(Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "BUNDLE_NAME")")
+                    }
+                    .font(.largeTitle.weight(.bold))
+                    .padding(.top, 100)
+                    Spacer()
+                    VStack(spacing: 6) {
+                        Image(systemName: "hand.raised.fill")
+                            .font(.system(size: 30))
+                            .foregroundStyle(Color.accentColor)
+                        Text(privacyDescription)
+                            .foregroundStyle(.secondary)
+                            .font(.footnote)
+                            .multilineTextAlignment(.center)
+                    }
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Continue")
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity, maxHeight: 50)
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+                if let safeFeatures = features {
+                    VStack(spacing: 40) {
+                        ForEach(safeFeatures) { feature in
+                            OnboardingFeatureView(feature)
+                        }
+                    }
+                }
+            }
 #else
             VStack(spacing: 20) {
                 VStack(alignment: .leading) {
                     Text("Welcome to")
-                    Text("\(Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "OBKIT_BUNDLE_NAME")")
+                    Text("\(Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "BUNDLE_NAME")")
                         .foregroundStyle(Color.accentColor)
                 }
                 .font(.largeTitle.weight(.bold))
@@ -128,7 +165,7 @@ public struct OnboardingView: View {
 @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 #Preview {
     OnboardingView(
-        privacyDescription: "\(Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "OBKIT_BUNDLE_NAME") collects usage data including your device identifier, app version, and language. By selecting continue, you agree to the privacy policy.",
+        privacyDescription: "\(Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "BUNDLE_NAME") collects usage data including your device identifier, app version, and language. By selecting continue, you agree to the privacy policy.",
         privacyURL: URL(string: "https://www.apple.com/privacy")!
     )
 }
@@ -149,7 +186,7 @@ public struct OnboardingView: View {
                 description: "Previews how your app looks when things are different."
             )
         ],
-        privacyDescription: "\(Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "OBKIT_BUNDLE_NAME") collects usage data including your device identifier, app version, and language. By selecting continue, you agree to the privacy policy.",
+        privacyDescription: "\(Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "BUNDLE_NAME") collects usage data including your device identifier, app version, and language. By selecting continue, you agree to the privacy policy.",
         privacyURL: URL(string: "https://www.apple.com/privacy")!
     )
 }
