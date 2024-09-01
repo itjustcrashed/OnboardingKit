@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
+@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 class OnboardingFeature: Identifiable {
     var titleKey: LocalizedStringKey
     var systemImage: String
@@ -22,6 +22,7 @@ class OnboardingFeature: Identifiable {
     
 }
 
+@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 struct OnboardingFeatureView: View {
     var feature: OnboardingFeature
     
@@ -66,7 +67,7 @@ struct OnboardingFeatureView: View {
     }
 }
 
-@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
+@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview {
 #if os(watchOS)
     ScrollView {

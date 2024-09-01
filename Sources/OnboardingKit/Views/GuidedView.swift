@@ -7,9 +7,12 @@
 
 import SwiftUI
 
-struct GuidedView<Content: View>: View {
+@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
+public struct GuidedView<Content: View>: View {
     @AppStorage("onboarding_complete")
     var onboardingComplete: Bool = false
+    
+    @State var showOnboarding = false
     
     let features: [OnboardingFeature]?
     let privacyDescription: LocalizedStringKey
@@ -23,16 +26,22 @@ struct GuidedView<Content: View>: View {
         self.content = content()
     }
     
-    var body: some View {
-        ZStack {
-            content
-            if !onboardingComplete {
-                OnboardingView(features: features, privacyDescription: privacyDescription, privacyURL: privacyURL)
+    public var body: some View {
+        content
+            .sheet(isPresented: $showOnboarding) {
+                OnboardingView(
+                    features: features,
+                    privacyDescription: privacyDescription,
+                    privacyURL: privacyURL
+                )
             }
-        }
+            .onAppear {
+                showOnboarding = !onboardingComplete
+            }
     }
 }
 
+@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview {
     GuidedView(
         features: [

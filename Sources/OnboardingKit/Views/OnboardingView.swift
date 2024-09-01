@@ -7,7 +7,7 @@ import SafariServices
 
 /// The main view on an onboarding that is displayed using ``GuidedView`` and waits for another view to
 /// load behind it, as well as a privacy policy.
-@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
+@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 public struct OnboardingView: View {
     @AppStorage("onboarding_complete")
     var onboardingComplete: Bool = false
@@ -15,15 +15,10 @@ public struct OnboardingView: View {
     @Environment(\.dismiss)
     var dismiss
     
+//    @Binding var isPresented: Bool
     var features: [OnboardingFeature]?
     var privacyDescription: LocalizedStringKey
     var privacyURL: URL
-    
-    init(features: [OnboardingFeature]? = nil, privacyDescription: LocalizedStringKey, privacyURL: URL) {
-        self.features = features
-        self.privacyDescription = privacyDescription
-        self.privacyURL = privacyURL
-    }
     
     @State var privacyPolicyIsPresented: Bool = false
     
@@ -62,6 +57,7 @@ public struct OnboardingView: View {
                     Button {
                         dismiss()
                         onboardingComplete = true
+//                        isPresented = false
                     } label: {
                         Text("Continue")
                             .fontWeight(.semibold)
@@ -94,6 +90,7 @@ public struct OnboardingView: View {
                     }
                     Button {
                         dismiss()
+                        privacyPolicyIsPresented = false
                     } label: {
                         Text("Continue")
                             .fontWeight(.semibold)
@@ -141,6 +138,7 @@ public struct OnboardingView: View {
                 }
                 Button {
                     dismiss()
+//                    isPresented = false
                 } label: {
                     Text("Continue")
                         .fontWeight(.semibold)
@@ -159,36 +157,6 @@ public struct OnboardingView: View {
 #endif
         .background(.background)
     }
-}
-
-// No features
-@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
-#Preview {
-    OnboardingView(
-        privacyDescription: "\(Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "BUNDLE_NAME") collects usage data including your device identifier, app version, and language. By selecting continue, you agree to the privacy policy.",
-        privacyURL: URL(string: "https://www.apple.com/privacy")!
-    )
-}
-
-// With features
-@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
-#Preview {
-    OnboardingView(
-        features: [
-            OnboardingFeature(
-                "Preview your apps",
-                systemImage: "iphone.gen3.motion",
-                description: "You can easily preview your apps on a variety of devices."
-            ),
-            OnboardingFeature(
-                "Verify different situations",
-                systemImage: "questionmark.app.dashed",
-                description: "Previews how your app looks when things are different."
-            )
-        ],
-        privacyDescription: "\(Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "BUNDLE_NAME") collects usage data including your device identifier, app version, and language. By selecting continue, you agree to the privacy policy.",
-        privacyURL: URL(string: "https://www.apple.com/privacy")!
-    )
 }
 
 #if canImport(SafariServices)
