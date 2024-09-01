@@ -8,12 +8,12 @@
 import SwiftUI
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
-class OnboardingFeature: Identifiable {
+public class OnboardingFeature: Identifiable {
     var titleKey: LocalizedStringKey
     var systemImage: String
     var description: LocalizedStringKey
     
-    init(_ titleKey: LocalizedStringKey, systemImage: String, description: LocalizedStringKey) {
+    public init(_ titleKey: LocalizedStringKey, systemImage: String, description: LocalizedStringKey) {
         self.titleKey = titleKey
         self.systemImage = systemImage
         self.description = description

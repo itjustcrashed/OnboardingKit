@@ -19,7 +19,7 @@ public struct GuidedView<Content: View>: View {
     let privacyURL: URL
     let content: Content
     
-    init(features: [OnboardingFeature], privacyDescription: LocalizedStringKey, privacyURL: URL, @ViewBuilder content: () -> Content) {
+    public init(features: [OnboardingFeature], privacyDescription: LocalizedStringKey, privacyURL: URL, @ViewBuilder content: () -> Content) {
         self.features = features
         self.privacyDescription = privacyDescription
         self.privacyURL = privacyURL
