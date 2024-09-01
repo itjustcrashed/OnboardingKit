@@ -7,7 +7,7 @@ be back tommo-i mean today
 OnboardingKit is a framework that allows you to display a simple an
 consistent onboarding experience that only takes a few lines of code.
 
-<img src=".github/iphone.png" /><img src=".github/ipad.png" /><img src=".github/watch.png" /><img src=".github/tv" />
+<img src=".github/iphone.png" width=150 /><img src=".github/ipad.png" width=250/><img src=".github/watch.png" width=200 /><img src=".github/tv.png" width=400 />
 
 To get started, just wrap your code in a GuidedView. You must at least specify a privacy message and URL.
 Onboarding expericences look like this in code:
