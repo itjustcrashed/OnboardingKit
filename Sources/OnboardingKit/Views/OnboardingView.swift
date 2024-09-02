@@ -57,7 +57,6 @@ public struct OnboardingView: View {
                     Button {
                         dismiss()
                         onboardingComplete = true
-//                        isPresented = false
                     } label: {
                         Text("Continue")
                             .fontWeight(.semibold)
@@ -90,7 +89,7 @@ public struct OnboardingView: View {
                     }
                     Button {
                         dismiss()
-                        privacyPolicyIsPresented = false
+                        onboardingComplete = true
                     } label: {
                         Text("Continue")
                             .fontWeight(.semibold)
@@ -138,7 +137,7 @@ public struct OnboardingView: View {
                 }
                 Button {
                     dismiss()
-//                    isPresented = false
+                    onboardingComplete = true
                 } label: {
                     Text("Continue")
                         .fontWeight(.semibold)
