@@ -9,7 +9,7 @@ be back tommo-i mean today
 ## I'm back
 OnboardingKit is a framework that allows you to display a simple an
 consistent onboarding experience that only takes a few lines of code.
-It works on iOS, Mac Catalyst, tvOS, and watchOS.
+It works on iOS, macOS, tvOS, visionOS, and watchOS.
 
 <img src=".github/iphone.png" width=200 /><img src=".github/ipad.png" width=350/><img src=".github/watch.png" width=250 />
 
