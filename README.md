@@ -3,8 +3,8 @@
 
 # OnboardingKit
 
-![be back soon](/.github/its_2am.png)
-be back tommo-i mean today
+No this project is not dead (unless its very clearly dead!)
+OnboardingKit won't really change much 'cus it's... onboardings...Maybe custom screens in the future?
 
 ## I'm back
 OnboardingKit is a framework that allows you to display a simple an
